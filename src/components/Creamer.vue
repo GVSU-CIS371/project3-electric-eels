@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<Prop>(), {
   name: "Milk",
 });
 </script>
+
 <style lang="scss" scoped>
 .froth {
   overflow: visible;

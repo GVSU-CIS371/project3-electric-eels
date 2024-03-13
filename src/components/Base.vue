@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<Prop>(), {
 </script>
 
 <style scoped>
+/* Just need to add the color/name to the style somehow #############################*/
 .baseBeverage {
   position: relative;
   width: 100%;

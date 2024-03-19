@@ -51,7 +51,7 @@
       </li>
 
       <li>
-        <span>Beverage:</span>
+        <span>Base Beverage:</span>
         <template v-for="beverage in beverages" :key="beverage">
           <label>
             <input

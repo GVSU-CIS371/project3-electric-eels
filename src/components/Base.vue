@@ -1,5 +1,5 @@
 <template>
-  <div class="baseBeverage" :style="baseStyle"></div>
+  <div class="baseBeverage" :style="customStyle"></div>
 </template>
 
 <script setup lang="ts">
@@ -33,11 +33,9 @@ const props = withDefaults(defineProps<Prop>(), {
   name: "Black Tea",
 });
 
-const baseStyle = computed(() =>  {
-  console.log("Computing style for: ", props.name);
-  const selectedBase = Bases.find(base => base.name === props.name);
+const customStyle = computed(() => {
   return {
-    backgroundColor : selectedBase ? selectedBase.color : '#6F4E37',
+    backgroundColor: Bases.find((base) => base.name === props.name)?.color,
   };
 });
 </script>

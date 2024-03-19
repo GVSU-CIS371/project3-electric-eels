@@ -4,13 +4,13 @@
     <Hot v-else />
     <Contents>
       <template v-slot:top>
-        <Creamer :name="creamer" />
+        <Creamer :name=creamer />
       </template>
       <template v-slot:mid>
-        <Syrup :name="syrup" />
+        <Syrup :name=syrup />
       </template>
       <template v-slot:bottom>
-        <Base :name="beverage" />
+        <Base :name=beverage />
       </template>
     </Contents>
   </Mug>

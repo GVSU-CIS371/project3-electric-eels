@@ -30,5 +30,5 @@ type Props = {
   syrup: string;
   beverage: string;
 };
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>

@@ -1,6 +1,6 @@
 <template>
-  <div class="froth" :style="customStyle">
-    <div v-for=" in 5" class="foam" id="props.name"></div>
+  <div class="froth" >
+    <div v-for=" in 5" class="foam" id="props.name" :style="customStyle"></div>
   </div>
 </template>
 

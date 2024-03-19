@@ -1,5 +1,5 @@
 <template>
-  <div class="froth">
+  <div class="froth" :style="customStyle">
     <div v-for=" in 5" class="foam" id="props.name"></div>
   </div>
 </template>
@@ -31,6 +31,13 @@ const Creamers: Creamer[] = [
 const props = withDefaults(defineProps<Prop>(), {
   name: "Milk",
 });
+
+const customStyle = computed(() => {
+  return {
+    backgroundColor: Creamers.find((creamer) => creamer.name === props.name)?.color,
+  };
+});
+
 </script>
 
 <style lang="scss" scoped>

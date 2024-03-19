@@ -4,13 +4,13 @@
     <Hot v-else />
     <Contents>
       <template v-slot:top>
-        <Creamer :creamer />
+        <Creamer :name=creamer />
       </template>
       <template v-slot:mid>
-        <Syrup :syrup />
+        <Syrup :name=syrup />
       </template>
       <template v-slot:bottom>
-        <Base :beverage />
+        <Base :name=beverage />
       </template>
     </Contents>
   </Mug>
@@ -30,5 +30,5 @@ type Props = {
   syrup: string;
   beverage: string;
 };
-defineProps<Props>();
+const props = defineProps<Props>();
 </script>

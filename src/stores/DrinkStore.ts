@@ -3,7 +3,15 @@ import {Beverage} from '../types';
 
 export const useDrinkStore = defineStore("DrinkStore", {
     state: () => {
-        return { beverages: {} as Beverage[] };
+        /*
+        Beverage is a type that looks like this:
+        type Beverage {
+            name: string;
+            price: number;
+            quantity: number;
+        }
+        */
+        return { beverages: [] as Beverage[] };
     },
     actions: {
         addBeverage(beverage: Beverage) {

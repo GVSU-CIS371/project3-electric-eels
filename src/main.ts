@@ -1,5 +1,15 @@
-import { createApp } from 'vue'
-import './styles/mug.scss'
-import App from './App.vue'
+import { createApp } from 'vue';
+import './styles/mug.scss';
+import App from './App.vue';
+import { createPinia } from "pinia";
+// import { createVuetify } from 'vuetify';
 
-createApp(App).mount('#app')
+// export const vuetify = createVuetify({
+//     theme: {
+//       defaultTheme: 'light',
+//     },
+//   });
+const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
+app.mount('#app');

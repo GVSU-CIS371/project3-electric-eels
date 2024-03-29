@@ -1,25 +1,27 @@
 import {defineStore} from 'pinia';
-import {Beverage} from '../types';
+import {Drink} from '../types';
 
 export const useDrinkStore = defineStore("DrinkStore", {
     state: () => {
         /*
-        Beverage is a type that looks like this:
-        type Beverage {
+        Drink is a type that looks like this:
+        type Drink {
             isIced: boolean;
             creamer: string;
             syrup: string;
             beverage: string;
+            name: string;
         }
         */
-        return { beverages: [] as Beverage[] };
+        return { drinks: [] as Drink[] };
     },
+    
     actions: {
-        addBeverage(beverage: Beverage) {
-            this.beverages.push(beverage);
+        addBeverage(beverage: Drink) {
+            this.drinks.push(beverage);
         },
         removeBeverage(index: number) {
-            this.beverages.splice(index, 1);
+            this.drinks.splice(index, 1);
         },
     },
 });

@@ -66,36 +66,44 @@
         </template>
       </li>
     </ul>
-    <!--
-    text input field labeled “Name” 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" v-model="count" min="0" max="5" />
-    and a button labeled “Make Beverage”. Bind the button with a click event that uses the $patch method to add the user’s selections as a named recipe in the Pinia store.
-      <button @click="$emit('addToCart', count), (count = 0)">Add to Cart</button>
-    -->
+    <label>Name:</label>
+    <input type="string" id="name" v-model="name"/>
+    <button @click="addToDrinks">Make Drink!</button>
 
-    <!--
-      Display Recipes: 
-      Show all the recipes currently stored in the Pinia Store In App.vue. 
-      Implement a click function, showBeverage, 
-      to allow users to click on a recipe name, 
-      which will then visually display the corresponding beverage in the mug.
-        <div class="cart">
-          <h2>Cart Items</h2>
+    <div class="Drinks">
+          <h2>Drinks:</h2>
+          <!-- <template>
+            <v-app>
+              <v-main>
+                <v-radio-group label="Drinks:" v-model="bevdrink">
+                  <v-radio v-for="(drink,opt) in DrinkStore.drinks" :label="drink.name" :value="opt" @click=""/>
+                </v-radio-group>
+              </v-main>
+            </v-app>
+          </template> -->
+
           <ul>
-            <li v-for="(item, idx) in cartStore.products" :key="`cart-item-${idx}`">
-              {{ item.name }}
-            </li>
+            <template v-for="(drink, idx) in DrinkStore.drinks" :key="idx">
+              <p>
+                <input v-model="bevdrink" :id="`r${idx}`" type="radio" :value="drink" @click="showBeverage">
+                <label :for="`r${idx}`">{{ drink.name }}</label>
+              </p>
+              </template>
           </ul>
-        </div>
-    -->
-    
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useDrinkStore } from "./stores/DrinkStore";
 import { ref } from "vue";
 import Beverage from "./components/Beverage.vue";
+
+import { Drink } from "./types";
+
+const DrinkStore = useDrinkStore();
+
+
 // Define reactive data
 const temps = ref(["Hot", "Cold"]);
 const creamers = ref(["None", "Milk", "Cream", "Half & Half"]);
@@ -106,6 +114,32 @@ const currentTemp = ref("Hot");
 const currentCream = ref("None");
 const currentSyrup = ref("None");
 const currentBeverage = ref("Coffee");
+
+const name = ref("");
+const bevdrink = ref();
+
+const addToDrinks = () => {
+  const drink:Drink = {
+    isIced: currentTemp.value == "Cold",
+    creamer: currentCream.value,
+    syrup: currentSyrup.value,
+    beverage: currentBeverage.value,
+    name: name.value
+  };
+  DrinkStore.$patch((state) => {
+    state.drinks.push(drink);
+    console.log("Pushed drink to store");
+  });
+};
+
+const showBeverage = () => {
+  currentBeverage.value = bevdrink.value.beverage;
+  currentCream.value = bevdrink.value.creamer;
+  currentSyrup.value = bevdrink.value.syrup;
+  currentTemp.value = bevdrink.value.isIced ? "Cold" : "Hot";
+  name.value = bevdrink.value.name;
+};
+
 </script>
 
 <style lang="scss">

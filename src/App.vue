@@ -66,6 +66,30 @@
         </template>
       </li>
     </ul>
+    <!--
+    text input field labeled “Name” 
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" v-model="count" min="0" max="5" />
+    and a button labeled “Make Beverage”. Bind the button with a click event that uses the $patch method to add the user’s selections as a named recipe in the Pinia store.
+      <button @click="$emit('addToCart', count), (count = 0)">Add to Cart</button>
+    -->
+
+    <!--
+      Display Recipes: 
+      Show all the recipes currently stored in the Pinia Store In App.vue. 
+      Implement a click function, showBeverage, 
+      to allow users to click on a recipe name, 
+      which will then visually display the corresponding beverage in the mug.
+        <div class="cart">
+          <h2>Cart Items</h2>
+          <ul>
+            <li v-for="(item, idx) in cartStore.products" :key="`cart-item-${idx}`">
+              {{ item.name }}
+            </li>
+          </ul>
+        </div>
+    -->
+    
   </div>
 </template>
 

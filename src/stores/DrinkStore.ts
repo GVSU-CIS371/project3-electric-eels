@@ -6,9 +6,10 @@ export const useDrinkStore = defineStore("DrinkStore", {
         /*
         Beverage is a type that looks like this:
         type Beverage {
-            name: string;
-            price: number;
-            quantity: number;
+            isIced: boolean;
+            creamer: string;
+            syrup: string;
+            beverage: string;
         }
         */
         return { beverages: [] as Beverage[] };
